@@ -2,23 +2,69 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="repo1.MainPage">
+    <StackLayout Padding="10">
+        <StackLayout>
+            <Label Text="Kalkulator BMI" Margin="0,0,0,30" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="40"/>
+            <StackLayout Margin="0,0,0,40">
+                <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Imie: " Grid.Column="0" Grid.Row="0" FontSize="20" HorizontalOptions="Center"/>
+                    <Label Text="Naziwsko: " Grid.Column="0" Grid.Row="1" FontSize="20" HorizontalOptions="Center"/>
+                    <Entry x:Name="imietxt" Grid.Column="1" Grid.Row="0" FontSize="20"/>
+                    <Entry x:Name="nazwiskotxt" Grid.Column="1" Grid.Row="1" FontSize="20"/>
+                </Grid>
+            </StackLayout>
+            <StackLayout Padding="10,0">
+                <Label Text="Ile masz wzrostu ?" FontSize="20"
+                HorizontalOptions="Center"/>
+                <Label Text="{Binding Source={x:Reference HeightSlider},
+                Path=Value,
+                StringFormat='{0:F0} cm'}"
+               HorizontalOptions="Center" FontSize="30" TextColor="Blue" FontAttributes="Bold"
+               />
+                <Slider x:Name="HeightSlider"
+                Maximum="205"
+                Minimum="100"
+                Value="{Binding Height}" ThumbColor="Green" MaximumTrackColor="Red" MinimumTrackColor="Blue"/>
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Padding="10,10">
+            <Label Text="Ile ważysz ?" FontSize="20"
+                HorizontalOptions="Center"/>
+            <Label Text="{Binding Source={x:Reference WeightSlider},
+                Path=Value,
+                StringFormat='{0:F0} kg'}"
+               HorizontalOptions="Center" FontSize="30" TextColor="Blue" FontAttributes="Bold"
+               />
+            <Slider x:Name="WeightSlider"
+                Maximum="170"
+                Minimum="40"
+                Value="{Binding Weight}" ThumbColor="Green" MaximumTrackColor="Red" MinimumTrackColor="Blue"/>
+        </StackLayout>
+        <StackLayout Padding="10,20">
+            <Label Text="Twoje BMI wynosi:"
+               HorizontalOptions="Center"
+               FontSize="20"
+               />
+            <Label Text="{Binding Bmi}" x:Name="BMI"
+               HorizontalOptions="Center" TextColor="Orange"
+               FontSize="48"
+               />
+            <Label Text="{Binding Classification}"
+               HorizontalOptions="Center"
+               FontSize="20"
+               />
+        </StackLayout>
+        <Button Text="Zapisz" Clicked="Zapisz_Clicked" BackgroundColor="LightBlue" FontSize="25" Margin="10,10" CornerRadius="15"/>
+        <Button Text="Zobacz liste" Clicked="ZobaczListe_Clicked" BackgroundColor="LightBlue" FontSize="25" Margin="10,10" CornerRadius="15"/>
     </StackLayout>
 
 </ContentPage>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="repo1.DanePage">
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+            <ListView x:Name="listaBMI" SelectionMode="Single" HasUnevenRows="True" >
+                <ListView.Header>
+                    <StackLayout>
+                        <Grid BackgroundColor="lightblue">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="ID" Grid.Column="0" Grid.Row="0" HorizontalOptions="CenterAndExpand" FontSize="20"/>
+                            <Label Text="Imie" Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand" FontSize="20"/>
+                            <Label Text="Nazwisko" Grid.Column="2" Grid.Row="0" HorizontalOptions="CenterAndExpand" FontSize="20"/>
+                            <Label Text="BMI" Grid.Column="3" Grid.Row="0" HorizontalOptions="CenterAndExpand" FontSize="20"/>
+                        </Grid>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding ID}" Grid.Column="0" Grid.Row="0" HorizontalOptions="CenterAndExpand" FontSize="20"/>
+                                    <Label Text="{Binding Imie}" Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand" FontSize="20"/>
+                                    <Label Text="{Binding Nazwisko}" Grid.Column="2" Grid.Row="0" HorizontalOptions="CenterAndExpand" FontSize="20"/>
+                                    <Label Text="{Binding BMI}" Grid.Column="3" Grid.Row="0" HorizontalOptions="CenterAndExpand" FontSize="20"/>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Wróć" Clicked="Wroc_Clicked" VerticalOptions="EndAndExpand" BackgroundColor="LightBlue" FontSize="25" Margin="10,10" CornerRadius="15"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
